@@ -1,2 +1,8 @@
 <h1>Reddit</h1>
-<p>No posts have been added</p>
+<% if @posts.any? %>
+	<% @posts.each do |post| %>
+		<%= post.text %>
+	<% end %>
+<% else %>
+	<p>No posts have been added</p>
+<% end %>
