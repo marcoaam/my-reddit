@@ -70,7 +70,7 @@ describe 'Posts' do
 			fill_in 'Categories', with: 'webdev'
 			click_button 'Post'
 			expect(page).to have_link 'Web dev bootcamp'
-			expect(page).to have_content 'category: webdev'
+			expect(page).to have_content 'categories: webdev'
 		end
 	end
 

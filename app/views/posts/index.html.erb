@@ -4,8 +4,9 @@
 		<%= link_to post.title, post.url %>
 		<%= "Posted by #{post.user.email}"%>
 		<% if post.categories.all.any? %>
+			categories: 
 			<% post.categories.all.each do |category| %>
-				<%= "category: #{category.name}"%>
+				<%= "#{category.name} "%>
 			<% end %>
 		<% end %>
 	<% end %>
