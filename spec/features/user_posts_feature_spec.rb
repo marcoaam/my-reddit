@@ -19,4 +19,11 @@ describe 'User Posts' do
 		expect(page).not_to have_link 'web development'
 		expect(page).to have_link 'new title'
 	end
+
+	it 'can delete one of his posts' do
+		create_post('web development', 'http://www.ok.com', 'technology')
+		click_link 'My posts'
+		click_link 'Delete'
+		expect(page).not_to have_link 'web development'
+	end
 end

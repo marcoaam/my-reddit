@@ -11,6 +11,7 @@
 		<% end %>
 			<% if user_signed_in? && request.path != '/posts' %>
 			<%= link_to('Edit', edit_user_post_path(current_user, post)) %>
+			<%= link_to('Delete', user_post_path(current_user, post), method: :delete )%>
 			<% end %>
 	<% end %><br>
 <% else %>
