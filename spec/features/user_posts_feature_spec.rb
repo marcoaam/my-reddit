@@ -16,7 +16,7 @@ describe 'User Posts' do
 		fill_in 'Url', with: 'http://www.newweb.com'
 		fill_in 'Categories', with: 'new category'
 		click_button 'Update'
-		expect(page).not_to have_content 'web development'
-		expect(page).to have_content 'new title'
+		expect(page).not_to have_link 'web development'
+		expect(page).to have_link 'new title'
 	end
 end

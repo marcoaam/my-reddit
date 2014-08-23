@@ -20,7 +20,13 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.new(current_user.posts.find_by(id: params[:post_id]))
+    @post = current_user.posts.find_by(id: params[:id])
+  end
+
+  def update
+    post = current_user.posts.find_by(id: params[:id])
+    post.update(params[:post].permit(:title, :url, :categories_list))
+    redirect_to '/posts'
   end
 
 end
