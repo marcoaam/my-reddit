@@ -30,7 +30,9 @@ describe 'Users' do
 
 		it 'can sign out' do
 			login_as user
+			visit '/posts'
 			click_link 'Sign out'
+			expect(page).to have_content 'Signed out successfully'
 		end
 
 	end
