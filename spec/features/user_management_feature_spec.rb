@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Users' do
 
-	context 'With users' do
+	context 'Without users' do
 
 		it 'can sign up' do
 			visit '/users/sign_up'
