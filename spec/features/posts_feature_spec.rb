@@ -17,6 +17,15 @@ describe 'Posts' do
 			expect(page).to have_content 'You need to sign in or sign up before continuing.'
 		end
 
+		it 'can create a new post' do
+			login_as user
+			visit '/posts'
+			click_link 'New post'
+			fill_in 'Content', with: 'check out this new website'
+			click_button 'Post'
+			expect(page).to have_content 'check out this new website'
+		end
+
 	end
 
 	context 'With posts' do

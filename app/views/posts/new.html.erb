@@ -1,1 +1,5 @@
-new post
+<%= form_for @post do |f| %>
+	<%= f.label :text, 'Content' %>
+	<%= f.text_field :text %>
+	<%= f.submit 'Post' %>
+<% end %>

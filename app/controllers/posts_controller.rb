@@ -7,7 +7,13 @@ class PostsController < ApplicationController
   end
 
   def new
-  	
+  	@post = Post.new
+  end
+
+  def create
+  	@post = Post.new(params[:post].permit(:text))
+  	@post.save
+  	redirect_to '/posts'
   end
 
 end
