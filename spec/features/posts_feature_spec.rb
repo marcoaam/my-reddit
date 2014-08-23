@@ -14,7 +14,7 @@ describe 'Posts' do
 		it 'need to have a user to be able to post' do
 			visit '/posts'
 			click_link 'New post'
-			expect(page).to have_content 'Sign in'
+			expect(page).to have_content 'You need to sign in or sign up before continuing.'
 		end
 
 	end
