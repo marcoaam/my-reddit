@@ -43,7 +43,6 @@ describe 'Posts' do
 			click_button 'Post'
 			expect(page).to have_link 'Web dev bootcamp'
 		end
-
 	end
 
 	context 'With posts' do
