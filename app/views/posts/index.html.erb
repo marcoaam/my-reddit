@@ -3,6 +3,11 @@
 	<% @posts.each do |post| %>
 		<%= link_to post.title, post.url %>
 		<%= "Posted by #{post.user.email}"%>
+		<% if post.categories.all.any? %>
+			<% post.categories.all.each do |category| %>
+				<%= "category: #{category.name}"%>
+			<% end %>
+		<% end %>
 	<% end %>
 <% else %>
 	<p>No posts have been added</p>
