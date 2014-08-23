@@ -26,6 +26,16 @@ describe 'Posts' do
 			expect(page).to have_content 'check out this new website'
 		end
 
+		it 'a post belongs to a user' do
+			login_as user
+			visit '/posts'
+			click_link 'New post'
+			fill_in 'Title', with: 'check out this new website'
+			fill_in 'Url', with: 'http://www.makersacademy.com/'
+			click_button 'Post'
+			expect(page).to have_content 'Posted by m@m.com'
+		end
+
 	end
 
 	context 'Posts with urls' do
@@ -47,8 +57,10 @@ describe 'Posts' do
 
 	context 'With posts' do
 
+		let(:user) { User.create(email: 'm@m.com', password: '12345678', password_confirmation: '12345678')}
+
 		before(:each) do
-			Post.create(title: 'Challenge day at makers academy')
+			Post.create(title: 'Challenge day at makers academy',user: user)
 		end
 
 		it 'Shows all posts' do

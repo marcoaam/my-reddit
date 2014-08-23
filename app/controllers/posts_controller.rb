@@ -11,7 +11,8 @@ class PostsController < ApplicationController
   end
 
   def create
-  	Post.create(params[:post].permit(:title, :url))
+    user = User.find(current_user)
+  	user.posts.create(params[:post].permit(:title, :url))
   	redirect_to '/posts'
   end
 
