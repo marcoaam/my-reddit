@@ -1,7 +1,7 @@
 <h1>Reddit</h1>
 <% if @posts.any? %>
 	<% @posts.each do |post| %>
-		<%= post.text %>
+		<%= post.title %>
 	<% end %>
 <% else %>
 	<p>No posts have been added</p>

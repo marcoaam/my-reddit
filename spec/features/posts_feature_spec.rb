@@ -21,7 +21,7 @@ describe 'Posts' do
 			login_as user
 			visit '/posts'
 			click_link 'New post'
-			fill_in 'Content', with: 'check out this new website'
+			fill_in 'Title', with: 'check out this new website'
 			click_button 'Post'
 			expect(page).to have_content 'check out this new website'
 		end
@@ -31,7 +31,7 @@ describe 'Posts' do
 	context 'With posts' do
 
 		before(:each) do
-			Post.create(text: 'Challenge day at makers academy')
+			Post.create(title: 'Challenge day at makers academy')
 		end
 
 		it 'Shows all posts' do
