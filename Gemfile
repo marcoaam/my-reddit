@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'warden'
 
 gem 'devise'
+
+gem 'database_cleaner'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use postgresql as the database for Active Record
