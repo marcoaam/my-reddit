@@ -14,3 +14,35 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+	margin-top: 60px;
+}
+
+.btn-primary {
+	margin: auto 5px;
+}
+
+.btn-top {
+	margin-left: 10px;
+	margin-top: 8px;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+	color: white;
+} 
+
+.btn-danger {
+	margin-left: 10px;
+	margin-top: 8px;
+}
+
+.navbar-brand {
+	font-size: 30px;
+}
+
+.remember_me_label {
+	color: white;
+}

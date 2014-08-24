@@ -13,24 +13,24 @@ describe 'Posts' do
 
 		it 'need to have a user to be able to post' do
 			visit '/posts'
-			click_link 'New post'
+			click_link 'New link post'
 			expect(page).to have_content 'You need to sign in or sign up before continuing.'
 		end
 
-		it 'can create a new post' do
+		it 'can create a new link post' do
 			login_as user
 			visit '/posts'
-			click_link 'New post'
+			click_link 'New link post'
 			fill_in 'Title', with: 'check out this new website'
 			fill_in 'Url', with: 'http://www.makersacademy.com'
 			click_button 'Post'
 			expect(page).to have_content 'check out this new website'
 		end
 
-		it 'can not create a new post if title or url is not provided' do
+		it 'can not create a new link post if title or url is not provided' do
 			login_as user
 			visit '/posts'
-			click_link 'New post'
+			click_link 'New link post'
 			fill_in 'Title', with: 'check out this new website'
 			click_button 'Post'
 			expect(page).not_to have_content 'check out this new website'
@@ -39,7 +39,7 @@ describe 'Posts' do
 		it 'a post belongs to a user' do
 			login_as user
 			visit '/posts'
-			click_link 'New post'
+			click_link 'New link post'
 			fill_in 'Title', with: 'check out this new website'
 			fill_in 'Url', with: 'http://www.makersacademy.com/'
 			click_button 'Post'
@@ -57,7 +57,7 @@ describe 'Posts' do
 
 		it 'can create a post with a url' do
 			visit '/posts'
-			click_link 'New post'
+			click_link 'New link post'
 			fill_in 'Title', with: 'Web dev bootcamp'
 			fill_in 'Url', with: 'http://www.makersacademy.com/'
 			click_button 'Post'
@@ -74,7 +74,7 @@ describe 'Posts' do
 
 		it 'can create a post with a category' do
 			visit '/posts'
-			click_link 'New post'
+			click_link 'New link post'
 			fill_in 'Title', with: 'Web dev bootcamp'
 			fill_in 'Url', with: 'http://www.makersacademy.com/'
 			fill_in 'Categories', with: 'webdev'
