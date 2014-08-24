@@ -39,4 +39,15 @@ describe 'Likes' do
 		expect(page).to have_content '1'
 	end
 
+	it 'User can dislike a comment' do
+		visit '/posts'
+		fill_in 'Thoughts', with: 'great idea'
+		click_button 'Leave comment'
+		within '.comment' do
+			click_link 'Like'
+			click_link 'Dislike'
+		end
+		expect(page).to have_content '0'
+	end
+
 end

@@ -23,6 +23,7 @@
 						<%= "- Posted #{time_ago_in_words(comment.created_at)} ago - by #{comment.user.username}"%>
 						<%= "Points: #{comment.likes.count}" %>
 						<%= link_to('Like', comment_like_comment_path(comment), method: :post) %>
+						<%= link_to('Dislike', comment_like_comment_path(comment), method: :delete) %>
 						</li>
 						<hr>
 				<% end %>

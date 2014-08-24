@@ -1,5 +1,5 @@
 class LikeCommentsController < ApplicationController
-	
+
 	before_action :authenticate_user!
 
 	def create
@@ -9,7 +9,7 @@ class LikeCommentsController < ApplicationController
 	end
 
 	def destroy
-		comment = comment.find(params[:comment_id])
+		comment = Comment.find(params[:comment_id])
 		if !comment.likes.find_by(user_id: current_user.id).nil? && comment.likes.any?
 			like = comment.likes.find_by(user_id: current_user.id)
 			like.destroy
