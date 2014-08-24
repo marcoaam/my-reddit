@@ -21,11 +21,11 @@ class Post < ActiveRecord::Base
 	end
 
 	def self.hot
-		posts_over_last_hour.sort_by { |post| post.likes.count }.reverse
+		posts_over_last_24_hours.sort_by { |post| post.likes.count }.reverse
 	end
 
-	def self.posts_over_last_hour
-		self.all.select { |post| (Time.now - post.created_at) < 3600 }
+	def self.posts_over_last_24_hours
+		self.all.select { |post| (Time.now - post.created_at) < (3600 * 24) }
 	end
 
 	def self.rising
