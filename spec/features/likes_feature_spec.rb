@@ -29,4 +29,14 @@ describe 'Likes' do
 		expect(page).to have_content '1'
 	end
 
+	it 'User can like a comment' do
+		visit '/posts'
+		fill_in 'Thoughts', with: 'great idea'
+		click_button 'Leave comment'
+		within '.comment' do
+			click_link 'Like'
+		end
+		expect(page).to have_content '1'
+	end
+
 end

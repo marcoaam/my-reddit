@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :comments do
+    resource :like_comment
+  end
+
   # resource :search do
   #   resources :posts
   # end

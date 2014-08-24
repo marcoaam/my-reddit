@@ -19,8 +19,10 @@
 			<ul class='post_comments'>
 				<%= render 'comment_form', post: post %>
 				<% post.comments.reverse.each do |comment| %>
-					<li> <%= "#{comment.thoughts}" %>
+					<li class="comment"> <%= "#{comment.thoughts}" %>
 						<%= "- Posted #{time_ago_in_words(comment.created_at)} ago - by #{comment.user.username}"%>
+						<%= "Points: #{comment.likes.count}" %>
+						<%= link_to('Like', comment_like_comment_path(comment), method: :post) %>
 						</li>
 						<hr>
 				<% end %>

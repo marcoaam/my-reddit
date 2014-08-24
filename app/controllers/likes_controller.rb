@@ -14,8 +14,10 @@ class LikesController < ApplicationController
 			like = post.likes.find_by(user_id: current_user.id)
 			like.destroy
 			redirect_to '/posts'
-		else
+		elsif post.likes.any?
 			post.likes.first.destroy
+			redirect_to '/posts'
+		else
 			redirect_to '/posts'
 		end
 	end
