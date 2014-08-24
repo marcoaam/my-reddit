@@ -12,11 +12,6 @@
 	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	  <%= csrf_meta_tags %>
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
   </head>
 
   <body>
@@ -51,13 +46,10 @@
               
 							<%= form_for(User.new, as: :user, url: session_path(:user), html: { class: "navbar-form navbar-right" }, role: "form") do |f| %>
 								<div class="form-group">
-								  <%= f.text_field :login, autofocus: true, placeholder: "Email/Username", class: "form-control" %>
+								  <%= f.text_field :login, autofocus: true, placeholder: "Email / Username", class: "form-control" %>
 								</div>
 								<div class="form-group">
 								  <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
-								</div>
-								<div class="form-group">
-								 	<%= f.check_box :remember_me %> <%= f.label :remember_me, class: "remember_me_label" %>
 								</div>
 								  <%= f.submit "Sign in", class: "btn btn-success"%>
 							<% end %>
@@ -69,13 +61,43 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
 
-    <div class="container">
-      <!-- Example row of columns -->
-      <%= yield %>
+    <main class="container">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Sign up</h4>
+              </div>
+              <div class="modal-body">
+
+                <%= form_for(User.new, as: :user, url: registration_path(:user), html: { class: 'form-signup', role: 'form' }) do |f| %>
+                  
+                  <div><%= f.label :username %><br />
+                  <%= f.text_field :username, autofocus: true, class: 'form-control' %></div>
+
+                  <div><%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true, class: 'form-control' %></div>
+
+                  <div><%= f.label :password %><br />
+                    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %></div>
+
+                  <div><%= f.label :password_confirmation %><br />
+                    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %></div>
+              </div>
+              <div class="modal-footer">
+                <%= f.submit "Submit", class: "btn btn-lg btn-primary btn-block"%>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    	<%= yield %>
+  	</main>
 
       <hr>
 
-      <footer>
+      <footer class="container">
         <p>&copy; my-reddit 2014</p>
-      </footer>
-    </div> <!-- /container -->
+      </footer> <!-- /container -->
