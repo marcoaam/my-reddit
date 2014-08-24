@@ -4,7 +4,8 @@
 		<%= link_to post.title, post.url %>
 		<%= "Points: #{post.likes.count}" %>
 		<%= link_to('Like', post_like_path(post), method: :post) %>
-		<%= link_to('Dislike', post_like_path(post), method: :delete) %>
+		<%= link_to('Dislike', post_like_path(post), method: :delete) %><br>
+		<span class="share"> Share: <%= social_share_button_tag(post.title, :url => post.url) %> </span>
 		<%= "Posted #{time_ago_in_words(post.created_at)} ago -by #{post.user.username}"%><br>
 		<% if post.categories.all.any? %>
 			categories: 
