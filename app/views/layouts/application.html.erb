@@ -31,6 +31,8 @@
           <a class="navbar-brand" href="#">My Reddit</a>
         </div>
         <div class="navbar-collapse collapse">
+          <%= link_to('new', post_path('newests'), class: 'navbar-right btn btn-top') %>
+          <%= link_to('hot', post_path('hot'), class: 'navbar-right btn btn-top') %>
 	        <%= link_to new_post_path, class: 'navbar-right btn btn-top' do %>
 	          [ <span class="glyphicon glyphicon-pencil"></span> ]
 	          <span>New link post</span>

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-	before_action :authenticate_user!, except: [:index]
+	before_action :authenticate_user!, except: [:index, :show]
 	
   def index
     @comment = Comment.new
@@ -34,6 +34,13 @@ class PostsController < ApplicationController
     post = current_user.posts.find_by(id: params[:id])
     post.destroy
     redirect_to '/posts'
+  end
+
+  def show
+    filter = params[:id].to_sym
+    @posts = Post.send(filter)
+    @comment = Comment.new
+    render "show_posts"
   end
 
 end

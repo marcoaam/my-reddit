@@ -31,4 +31,22 @@ RSpec.describe Post, :type => :model do
 		expect(post.categories.count).to eq 1
 	end
 
+	context 'Filter posts by' do
+
+		before(:each) do
+			Post.create(title: '5', url: 'http://www.marco.com')
+			Post.create(title: '4', url: 'http://www.marco.com')
+			Post.create(title: '3', url: 'http://www.marco.com').likes.create
+			Post.create(title: '2', url: 'http://www.marco.com')
+			Post.create(title: '1', url: 'http://www.marco.com')
+		end
+
+		it 'Newests' do
+			expect(Post.newests.first.title).to eq '1'
+		end
+
+		it 'hottest' do
+			expect(Post.hot.first.title).to eq '3'
+		end
+	end
 end

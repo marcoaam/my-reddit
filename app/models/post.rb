@@ -15,4 +15,17 @@ class Post < ActiveRecord::Base
 		return if all_categories.empty?
 		all_categories.split(' ').uniq.each { |category| self.categories << Category.find_or_create_by(name: category) }
 	end
+
+	def self.newests
+		self.all.sort_by { |post| post.created_at }.reverse
+	end
+
+	def self.hot
+		posts_over_last_hour.sort_by { |post| post.likes.count }.reverse
+	end
+
+	def self.posts_over_last_hour
+		self.all.select { |post| (Time.now - post.created_at) < 3600 }
+	end
+
 end
