@@ -27,6 +27,15 @@ describe 'Posts' do
 			expect(page).to have_content 'check out this new website'
 		end
 
+		it 'can not create a new post if title or url is not provided' do
+			login_as user
+			visit '/posts'
+			click_link 'New post'
+			fill_in 'Title', with: 'check out this new website'
+			click_button 'Post'
+			expect(page).not_to have_content 'check out this new website'
+		end
+
 		it 'a post belongs to a user' do
 			login_as user
 			visit '/posts'
