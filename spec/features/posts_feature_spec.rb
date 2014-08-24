@@ -22,6 +22,7 @@ describe 'Posts' do
 			visit '/posts'
 			click_link 'New post'
 			fill_in 'Title', with: 'check out this new website'
+			fill_in 'Url', with: 'http://www.makersacademy.com'
 			click_button 'Post'
 			expect(page).to have_content 'check out this new website'
 		end
@@ -79,7 +80,7 @@ describe 'Posts' do
 		let(:user) { User.create(username: 'marco', email: 'm@m.com', password: '12345678', password_confirmation: '12345678')}
 
 		before(:each) do
-			Post.create(title: 'Challenge day at makers academy',user: user)
+			Post.create(title: 'Challenge day at makers academy', url: 'http://www.makersacademy.com', user: user)
 		end
 
 		it 'Shows all posts' do
