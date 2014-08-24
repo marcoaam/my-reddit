@@ -13,7 +13,7 @@
 				<%= "#{category.name} "%>
 			<% end %><br>
 		<% end %>
-			<% if user_signed_in? && request.path != '/posts' %>
+			<% if user_signed_in? && !request.path.match(/\A\/user\/\d{1,}\/posts/).nil? %>
 			<%= link_to('Edit', edit_user_post_path(current_user, post)) %>
 			<%= link_to('Delete', user_post_path(current_user, post), method: :delete )%>
 			<% end %>

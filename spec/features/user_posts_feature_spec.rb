@@ -8,6 +8,16 @@ describe 'User Posts' do
 		login_as user
 	end
 
+	it 'can not delete one of his posts outside of my posts page' do
+		create_post('web development', 'http://www.ok.com', 'technology')
+		expect(page).not_to have_link 'Delete'
+	end
+
+	it 'can not edit one of his posts outside of my posts page' do
+		create_post('web development', 'http://www.ok.com', 'technology')
+		expect(page).not_to have_link 'Edit'
+	end
+
 	it 'can edit one of his posts' do
 		create_post('web development', 'http://www.ok.com', 'technology')
 		click_link 'My posts'
