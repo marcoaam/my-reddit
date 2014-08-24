@@ -15,4 +15,12 @@ describe 'Likes' do
 		expect(page).to have_content '1'
 	end
 
+	it 'User can dislike a post and substracts one like' do
+		visit '/posts'
+		click_link 'Like'
+		click_link 'Like'
+		click_link 'Dislike'
+		expect(page).to have_content '1'
+	end
+
 end

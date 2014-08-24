@@ -4,4 +4,10 @@ class LikesController < ApplicationController
 		post.likes.create
 		redirect_to '/posts'
 	end
+
+	def destroy
+		post = Post.find(params[:post_id])
+		post.likes.first.destroy
+		redirect_to '/posts'
+	end
 end
