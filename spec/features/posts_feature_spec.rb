@@ -4,7 +4,7 @@ describe 'Posts' do
 
 	context 'Without posts' do
 
-		let(:user) { User.create(email: 'm@m.com', password: '12345678', password_confirmation: '12345678')}
+		let(:user) { User.create(username: 'marco', email: 'm@m.com', password: '12345678', password_confirmation: '12345678')}
 
 		it 'Shows a message' do
 			visit '/posts'
@@ -33,7 +33,7 @@ describe 'Posts' do
 			fill_in 'Title', with: 'check out this new website'
 			fill_in 'Url', with: 'http://www.makersacademy.com/'
 			click_button 'Post'
-			expect(page).to have_content 'Posted by m@m.com'
+			expect(page).to have_content 'Posted by marco'
 		end
 
 	end
@@ -41,7 +41,7 @@ describe 'Posts' do
 	context 'Posts with urls' do
 
 		before(:each) do
-			user = User.create(email: 'm@m.com', password: '12345678', password_confirmation: '12345678')
+			user = User.create(username: 'marco', email: 'm@m.com', password: '12345678', password_confirmation: '12345678')
 			login_as user
 		end
 
@@ -58,7 +58,7 @@ describe 'Posts' do
 	context 'Posts with a category' do
 
 		before(:each) do
-			user = User.create(email: 'm@m.com', password: '12345678', password_confirmation: '12345678')
+			user = User.create(username: 'marco', email: 'm@m.com', password: '12345678', password_confirmation: '12345678')
 			login_as user
 		end
 
@@ -76,7 +76,7 @@ describe 'Posts' do
 
 	context 'With posts' do
 
-		let(:user) { User.create(email: 'm@m.com', password: '12345678', password_confirmation: '12345678')}
+		let(:user) { User.create(username: 'marco', email: 'm@m.com', password: '12345678', password_confirmation: '12345678')}
 
 		before(:each) do
 			Post.create(title: 'Challenge day at makers academy',user: user)

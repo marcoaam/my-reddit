@@ -4,7 +4,7 @@ require_relative './support/post_support'
 describe 'User Posts' do
 		
 	before(:each) do
-		user = User.create(email: 'm@m.com', password: '12345678', password_confirmation: '12345678')
+		user = User.create(username: 'marco', email: 'm@m.com', password: '12345678', password_confirmation: '12345678')
 		login_as user
 	end
 

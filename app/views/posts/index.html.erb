@@ -2,12 +2,12 @@
 <% if @posts.any? %>
 	<% @posts.each do |post| %>
 		<%= link_to post.title, post.url %>
-		<%= "Posted by #{post.user.email}"%><br>
+		<%= "Posted by #{post.user.username}"%><br>
 		<% if post.categories.all.any? %>
 			categories: 
 			<% post.categories.all.each do |category| %>
 				<%= "#{category.name} "%>
-			<% end %>
+			<% end %><br>
 		<% end %>
 			<% if user_signed_in? && request.path != '/posts' %>
 			<%= link_to('Edit', edit_user_post_path(current_user, post)) %>
