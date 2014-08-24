@@ -11,10 +11,6 @@ Rails.application.routes.draw do
     resource :like_comment
   end
 
-  # resource :search do
-  #   resources :posts
-  # end
-
   resources :user do
     resources :posts
   end

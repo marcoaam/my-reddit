@@ -16,9 +16,6 @@
 
   <body>
 
-		<p class="notice"><%= notice %></p>
-	  <p class="alert"><%= alert %></p>
-
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -31,13 +28,6 @@
           <a class="navbar-brand" href="#">My Reddit</a>
         </div>
         <div class="navbar-collapse collapse">
-          <%= link_to('new', post_path('newests'), class: 'navbar-right btn btn-top') %>
-          <%= link_to('hot', post_path('hot'), class: 'navbar-right btn btn-top') %>
-          <%= link_to('rising', post_path('rising'), class: 'navbar-right btn btn-top') %>
-	        <%= link_to new_post_path, class: 'navbar-right btn btn-top' do %>
-	          [ <span class="glyphicon glyphicon-pencil"></span> ]
-	          <span>New link post</span>
-	        <% end %>
          <% if user_signed_in? %>
          		<%= link_to('My posts', user_posts_path(current_user), class: 'navbar-right btn btn-top') %>
 						<%=link_to('Sign out', destroy_user_session_path, method: :delete, class: 'navbar-right btn btn-danger') %>
@@ -58,6 +48,13 @@
 							<% end %>
 						<% end %>
 					<% end %>
+          <%= link_to new_post_path, class: 'navbar-right btn btn-top' do %>
+            [ <span class="glyphicon glyphicon-pencil"></span> ]
+            <span>New link post</span>
+          <% end %>
+          <%= link_to('new', post_path('newests'), class: 'navbar-right btn btn-top') %>
+          <%= link_to('hot', post_path('hot'), class: 'navbar-right btn btn-top') %>
+          <%= link_to('rising', post_path('rising'), class: 'navbar-right btn btn-top') %>
         </div><!--/.navbar-collapse -->
       </div>
     </div>
@@ -65,6 +62,8 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
 
     <main class="container">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
