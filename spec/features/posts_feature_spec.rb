@@ -43,7 +43,7 @@ describe 'Posts' do
 			fill_in 'Title', with: 'check out this new website'
 			fill_in 'Url', with: 'http://www.makersacademy.com/'
 			click_button 'Post'
-			expect(page).to have_content 'Posted by marco'
+			expect(page).to have_content 'by marco'
 		end
 
 	end

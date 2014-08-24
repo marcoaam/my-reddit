@@ -5,7 +5,7 @@
 		<%= "Points: #{post.likes.count}" %>
 		<%= link_to('Like', post_like_path(post), method: :post) %>
 		<%= link_to('Dislike', post_like_path(post), method: :delete) %>
-		<%= "Posted by #{post.user.username}"%><br>
+		<%= "Posted #{time_ago_in_words(post.created_at)} ago -by #{post.user.username}"%><br>
 		<% if post.categories.all.any? %>
 			categories: 
 			<% post.categories.all.each do |category| %>
