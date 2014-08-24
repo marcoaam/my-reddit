@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   
   devise_for :users
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
+
+  # resource :search do
+  #   resources :posts
+  # end
 
   resources :user do
     resources :posts

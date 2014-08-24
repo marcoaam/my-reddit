@@ -3,8 +3,9 @@ class PostsController < ApplicationController
 	before_action :authenticate_user!, except: [:index]
 	
   def index
+    @comment = Comment.new
     if params[:user_id]
-      @posts = User.find_by(id: params[:user_id]).posts
+      @posts = User.find_by(id: params[:user_id]).posts.reverse
     else
   	  @posts = Post.all.reverse
     end

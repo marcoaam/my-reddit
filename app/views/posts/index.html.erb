@@ -13,6 +13,15 @@
 			<%= link_to('Edit', edit_user_post_path(current_user, post)) %>
 			<%= link_to('Delete', user_post_path(current_user, post), method: :delete )%>
 			<% end %>
+			<ul class='post_comments'>
+				<%= render 'comment_form', post: post %>
+				<% post.comments.reverse.each do |comment| %>
+					<li> <%= "#{comment.thoughts}" %>
+						<%= "- Posted #{time_ago_in_words(comment.created_at)} ago - by #{comment.user.username}"%>
+						</li>
+						<hr>
+				<% end %>
+			</ul>
 	<% end %><br>
 <% else %>
 	<p>No posts have been added</p>

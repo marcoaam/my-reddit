@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :posts
 
+  has_many :comments
+
   attr_accessor :login
 
   validates :username,
