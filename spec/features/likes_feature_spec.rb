@@ -18,8 +18,14 @@ describe 'Likes' do
 	it 'User can dislike a post and substracts one like' do
 		visit '/posts'
 		click_link 'Like'
-		click_link 'Like'
 		click_link 'Dislike'
+		expect(page).to have_content '0'
+	end
+
+	it 'User can like a post only once' do
+		visit '/posts'
+		click_link 'Like'
+		click_link 'Like'
 		expect(page).to have_content '1'
 	end
 
