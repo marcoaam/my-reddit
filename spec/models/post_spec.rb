@@ -35,7 +35,7 @@ RSpec.describe Post, :type => :model do
 
 		before(:each) do
 			Post.create(title: '5', url: 'http://www.marco.com')
-			Post.create(title: '4', url: 'http://www.marco.com')
+			Post.create(title: '4', url: 'http://www.marco.com').likes.create
 			Post.create(title: '3', url: 'http://www.marco.com').likes.create
 			Post.create(title: '2', url: 'http://www.marco.com')
 			Post.create(title: '1', url: 'http://www.marco.com')
@@ -47,6 +47,11 @@ RSpec.describe Post, :type => :model do
 
 		it 'hottest' do
 			expect(Post.hot.first.title).to eq '3'
+		end
+
+		it 'rising (latest likes)' do
+			expect(Post.rising.first.title).to eq '3'
+			expect(Post.rising[1].title).to eq '4'
 		end
 	end
 end

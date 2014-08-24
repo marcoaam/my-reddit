@@ -28,4 +28,8 @@ class Post < ActiveRecord::Base
 		self.all.select { |post| (Time.now - post.created_at) < 3600 }
 	end
 
+	def self.rising
+		self.newests.select { |post| post.likes.any? }.sort_by { |post| post.likes.last.created_at }.reverse
+	end
+
 end
