@@ -27,7 +27,7 @@ Technologies used:
 - Bootstrap
 
 
-How to use
+How to setup and use
 ------------
 
 	git clone git@github.com:marcoaam/my-reddit.git

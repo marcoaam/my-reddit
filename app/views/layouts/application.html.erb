@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -57,10 +56,6 @@
 							<% end %>
 						<% end %>
 					<% end %>
-          <%= link_to new_post_path, class: 'navbar-right btn btn-top' do %>
-            [ <span class="glyphicon glyphicon-pencil"></span> ]
-            <span>New link post</span>
-          <% end %>
         
         </div><!--/.navbar-collapse -->
       </div>
@@ -105,8 +100,11 @@
     	<%= yield %>
   	</main>
 
-      <hr>
+    <hr>
 
-      <footer class="container">
-        <p>&copy; my-reddit 2014</p>
-      </footer> <!-- /container -->
+    <footer class="container">
+      <p>&copy; my-reddit 2014</p>
+    </footer>
+
+  </body>
+</html>

@@ -19,7 +19,11 @@
 @import "bootstrap";
 
 body {
+	margin-top: 20px;
+}
 
+.navbar-header .navbar-brand {
+	color: white;
 }
 
 .btn-primary {
@@ -45,4 +49,21 @@ body {
 
 .remember_me_label {
 	color: white;
+}
+
+.sidebar-module-inset {
+	margin-top: 20px;
+	background-color: #f5f5f5;
+	padding: 15px;
+	border-radius: 10px;
+}
+
+a.category_link {
+	display: inline-block;
+	background-color: orange;
+	text-decoration: none;
+	color: white;
+	padding: 0 3px 0 3px;
+	border-radius: 3px;
+	margin: 1px;
 }

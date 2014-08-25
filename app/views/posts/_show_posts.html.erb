@@ -1,13 +1,15 @@
 <div class="row">
-  <div class="col-sm-8 blog-main">
-		<h2>Reddits</h2>
+  <div class="col-sm-8">
 		<% if @posts.any? %>
 			<% @posts.each do |post| %>
-				Title: <%= link_to post.title, post.url %> <br>
-				<span class="share"><%= social_share_button_tag(post.title, :url => request.original_url) %> </span>
+
+				<div class="col-md-2">
+				<%= link_to('Like', post_like_path(post), method: :post, class: "glyphicon glyphicon-chevron-up") %><br>
 				<%= "Points: #{post.total_points}" %>
-				<%= link_to('Like', post_like_path(post), method: :post, class: "glyphicon glyphicon-chevron-up") %>
-				<%= link_to('Dislike', post_like_path(post), method: :delete, class: "glyphicon glyphicon-chevron-down") %>
+				<%= link_to('Dislike', post_like_path(post), method: :delete, class: "glyphicon glyphicon-chevron-down") %></div>
+
+				<h4><%= link_to post.title, post.url %></h4> <br>
+				<span class="share"><%= social_share_button_tag(post.title, :url => request.original_url) %> </span>
 				
 				<% if user_signed_in? && !request.path.match(/\A\/user\/\d{1,}\/posts/).nil? %>
 				<%= link_to('Edit', edit_user_post_path(current_user, post), class: "glyphicon glyphicon-pencil") %>
@@ -42,12 +44,18 @@
 	</div>
 
 	<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+	  <%= link_to new_post_path, class: 'btn btn-top' do %>
+	    [ <span class="glyphicon glyphicon-pencil"></span> ]
+	    <span>New link post</span>
+	  <% end %>
 		<div class="sidebar-module sidebar-module-inset">
-		/sub-reddits/<% if @categories.any? %>
+
+		<h3>Categories: </h3><br>
+		/sub-reddits<% if @categories.any? %>
 			<% @categories.each do |category| %>
-				<%= link_to("#{category.name}", post_category_path("#{category.name}"), class: 'btn btn-top') %>
-			<% end %>
-		<% end %><br>
+				/ <%= link_to("#{category.name}", post_category_path("#{category.name}"), class: 'category_link') %>
+			<% end %><br>
+		<% end %>
 		</div>
 	</div>
 </div>
