@@ -33,6 +33,8 @@ How to setup and use
 	git clone git@github.com:marcoaam/my-reddit.git
 	cd my-reddit
 	bundle install
+	bin/rake db:create
+	bin/rake db:migrate
 	bin/rails server
 
 visit in your browser  http://localhost:3000/
