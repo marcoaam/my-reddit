@@ -12,21 +12,21 @@ describe 'Likes' do
 
 	it 'User can like a post' do
 		visit '/posts'
-		click_link 'Like'
-		expect(page).to have_content 'Points: 2'
+		page.find('.glyphicon-chevron-up').click
+		expect(page).to have_content '2'
 	end
 
 	it 'User can dislike a post and points go down by one' do
 		visit '/posts'
-		click_link 'Dislike'
-		expect(page).to have_content 'Points: 0'
+		page.find('.glyphicon-chevron-down').click
+		expect(page).to have_content '0'
 	end
 
 	it 'User can like a post only once' do
 		visit '/posts'
-		click_link 'Like'
-		click_link 'Like'
-		expect(page).to have_content 'Points: 2'
+		page.find('.glyphicon-chevron-up').click
+		page.find('.glyphicon-chevron-up').click
+		expect(page).to have_content '2'
 	end
 
 	it 'User can like a comment' do

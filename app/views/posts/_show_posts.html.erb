@@ -4,9 +4,9 @@
 			<% @posts.each do |post| %>
 
 				<div class="col-md-2">
-					<%= link_to('Like', post_like_path(post), method: :post, class: "glyphicon glyphicon-chevron-up") %><br>
-					<%= "Points: #{post.total_points}" %>
-					<%= link_to('Dislike', post_like_path(post), method: :delete, class: "glyphicon glyphicon-chevron-down") %>
+					<%= link_to('', post_like_path(post), method: :post, class: "glyphicon glyphicon-chevron-up") %><br>
+					<%= "#{post.total_points}" %><br>
+					<%= link_to('', post_like_path(post), method: :delete, class: "glyphicon glyphicon-chevron-down") %>
 				</div>
 				<h4><%= link_to post.title, post.url %></h4> <br>
 				<span class="share"><%= social_share_button_tag(post.title, :url => request.original_url) %> </span>
