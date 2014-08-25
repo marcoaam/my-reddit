@@ -72,6 +72,24 @@ RSpec.describe Post, :type => :model do
 
 	end
 
+
+	context 'Category' do
+
+		let(:user)  { User.create(username: 'marco', email: 'm@m.com', password: '12345678', password_confirmation: '12345678')   }
+
+		before(:each)  do
+			Post.create(title: 'Challenge', url: 'marco.com', user: user, categories_list: 'marco')
+			Post.create(title: 'day', url: 'marco.com', user: user, categories_list: 'web')
+		end
+
+		it 'search by category' do
+			expect(Post.search('marco').first.title).to eq 'Challenge'
+			expect(Post.search('marco')[1]).to eq nil
+		end
+
+	end
+
+
 	context 'Likes' do
 
 		let(:user)  { User.create(username: 'marco', email: 'm@m.com', password: '12345678', password_confirmation: '12345678')   }

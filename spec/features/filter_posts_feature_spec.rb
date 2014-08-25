@@ -41,4 +41,5 @@ describe 'Post select' do
 		click_link 'top'
 		expect(page).to have_content 'makers academy'
 	end
+	
 end

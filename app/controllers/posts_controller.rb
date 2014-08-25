@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 	
   def index
+    @categories = Category.all
     @comment = Comment.new
     if params[:user_id]
       @posts = User.find_by(id: params[:user_id]).posts.reverse
@@ -40,6 +41,7 @@ class PostsController < ApplicationController
     filter = params[:id].to_sym
     @posts = Post.send(filter)
     @comment = Comment.new
+    @categories = Category.all
     render "show_posts"
   end
 

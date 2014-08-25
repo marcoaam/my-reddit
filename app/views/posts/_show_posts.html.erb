@@ -1,4 +1,11 @@
-<h1>Reddit posts</h1>
+
+/sub-reddits/<% if @categories.any? %>
+	<% @categories.each do |category| %>
+		<%= link_to("#{category.name}", post_category_path("#{category.name}"), class: 'btn btn-top') %>
+	<% end %>
+<% end %><br>
+
+<h2>Reddits</h2>
 <% if @posts.any? %>
 	<% @posts.each do |post| %>
 		<%= link_to post.title, post.url %>
@@ -22,7 +29,7 @@
 		<% end %>
 
 			<ul class='post_comments'>
-				<%= render 'comment_form', post: post %>
+				<%= render partial: 'posts/comment_form', locals: { post: post } %>
 				<% post.comments.reverse.each do |comment| %>
 					<li class="comment"> <%= "#{comment.thoughts}" %>
 						<%= "- Posted #{time_ago_in_words(comment.created_at)} ago - by #{comment.user.username}"%>

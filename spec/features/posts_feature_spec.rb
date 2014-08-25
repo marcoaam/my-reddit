@@ -65,25 +65,6 @@ describe 'Posts' do
 		end
 	end
 
-	context 'Posts with a category' do
-
-		before(:each) do
-			user = User.create(username: 'marco', email: 'm@m.com', password: '12345678', password_confirmation: '12345678')
-			login_as user
-		end
-
-		it 'can create a post with a category' do
-			visit '/posts'
-			click_link 'New link post'
-			fill_in 'Title', with: 'Web dev bootcamp'
-			fill_in 'Url', with: 'http://www.makersacademy.com/'
-			fill_in 'Categories', with: 'webdev'
-			click_button 'Post'
-			expect(page).to have_link 'Web dev bootcamp'
-			expect(page).to have_content 'categories: webdev'
-		end
-	end
-
 	context 'With posts' do
 
 		let(:user) { User.create(username: 'marco', email: 'm@m.com', password: '12345678', password_confirmation: '12345678')}

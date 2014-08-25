@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resource :like
+    resource :category
     resources :comments
   end
 

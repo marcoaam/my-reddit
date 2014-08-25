@@ -49,4 +49,9 @@ class Post < ActiveRecord::Base
 		self.newests.select { |post| post.likes.any? }.sort_by { |post| post.likes.count }
 	end
 
+	def self.search(category_name)
+		category = Category.find_by(name: category_name)
+		Post.all.select { |post| post.categories.include?(category) }
+	end
+
 end
