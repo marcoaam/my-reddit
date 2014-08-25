@@ -31,6 +31,7 @@ describe 'Likes' do
 
 	it 'User can like a comment' do
 		visit '/posts'
+		click_link 'comments: '
 		fill_in 'Thoughts', with: 'great idea'
 		click_button 'Leave comment'
 		within '.comment' do
@@ -41,6 +42,7 @@ describe 'Likes' do
 
 	it 'User can dislike a comment' do
 		visit '/posts'
+		click_link 'comments: '
 		fill_in 'Thoughts', with: 'great idea'
 		click_button 'Leave comment'
 		within '.comment' do

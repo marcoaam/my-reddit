@@ -11,10 +11,19 @@ describe 'Comments' do
 
 	it 'can be created to a post with a user' do
 		visit '/posts'
+		click_link 'comments: '
 		fill_in 'Thoughts', with: 'great idea'
 		click_button 'Leave comment'
 		expect(page).to have_content 'great idea'
 		expect(page).to have_content 'by marco2'
+	end
+
+	it 'shows the amount of comments' do
+		visit '/posts'
+		click_link 'comments: '
+		fill_in 'Thoughts', with: 'great idea'
+		click_button 'Leave comment'
+		expect(page).to have_content 'comments: 1'
 	end
 
 end

@@ -29,11 +29,11 @@
         <div class="navbar-collapse collapse">
 
           <ul class="nav navbar-nav">
-            <li><%= link_to('new', post_path('newests')) %></li>
-            <li><%= link_to('hot', post_path('hot')) %></li>
-            <li><%= link_to('rising', post_path('rising')) %></li>
-            <li><%= link_to('controversial', post_path('controversial')) %></li>
-            <li><%= link_to('top', post_path('top')) %></li>
+            <li><%= link_to('new', post_path('newests'), class: 'top_bar_btn') %></li>
+            <li><%= link_to('hot', post_path('hot'), class: 'top_bar_btn') %></li>
+            <li><%= link_to('rising', post_path('rising'), class: 'top_bar_btn') %></li>
+            <li><%= link_to('controversial', post_path('controversial'), class: 'top_bar_btn') %></li>
+            <li><%= link_to('top', post_path('top'), class: 'top_bar_btn') %></li>
           </ul>
 
          <% if user_signed_in? %>

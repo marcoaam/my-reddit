@@ -2,7 +2,7 @@
 	<%= f.label :title %>
 	<%= f.text_field :title %>
 	<%= f.label :url %>
-	<%= f.text_field :url %>
+	<%= f.text_field :url, type: :url %>
 	<%= f.label :categories_list, 'Categories' %>
 	<%= f.text_field :categories_list %>
 	<%= f.submit 'Post' %>
