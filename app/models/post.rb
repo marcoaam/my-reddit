@@ -30,7 +30,7 @@ class Post < ActiveRecord::Base
 	end
 
 	def self.rising
-		self.newests.select { |post| post.likes.any? }.sort_by { |post| post.likes.last.created_at }.reverse
+		newests_posts_with_most_likes.sort_by { |post| post.created_at }.reverse
 	end
 
 	def self.controversial
@@ -39,6 +39,10 @@ class Post < ActiveRecord::Base
 
 	def self.posts_over_last_24_hours
 		self.all.select { |post| (Time.now - post.created_at) < (3600 * 24) }
+	end
+
+	def self.newests_posts_with_most_likes
+		self.newests.select { |post| post.likes.any? }.sort_by { |post| post.likes.count }
 	end
 
 end

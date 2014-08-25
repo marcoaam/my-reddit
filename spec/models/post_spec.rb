@@ -39,6 +39,7 @@ RSpec.describe Post, :type => :model do
 
 			post_with_like = Post.create(title: '3', url: 'http://www.marco.com')
 			post_with_like.likes.create
+			post_with_like.likes.create
 			Comment.create(thoughts: 'nice!!', post: post_with_like)
 
 			Post.create(title: '2', url: 'http://www.marco.com')
@@ -47,10 +48,12 @@ RSpec.describe Post, :type => :model do
 
 		it 'Newests' do
 			expect(Post.newests.first.title).to eq '1'
+			expect(Post.newests[1].title).to eq '2'
 		end
 
 		it 'hottest posts with most likes for the last 24 hours' do
 			expect(Post.hot.first.title).to eq '3'
+			expect(Post.hot[1].title).to eq '4'
 		end
 
 		it 'rising (latest likes of newests posts)' do
