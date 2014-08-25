@@ -1,6 +1,7 @@
 <div class="row">
 	<div class="col-sm-8">
 		<h4><%= link_to @post.title, @post.url %></h4> <br>
+		<%= "Posted #{time_ago_in_words(@post.created_at)} ago - by #{@post.user.username}"%><br>
 		<span class="share"><%= social_share_button_tag(@post.title, :url => request.original_url) %> </span>
 		<%= link_to("comments: #{@post.comments.count}", post_comments_path(@post)) %>
 		<ul class='post_comments'>

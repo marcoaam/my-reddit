@@ -8,7 +8,8 @@
 					<%= "#{post.total_points}" %><br>
 					<%= link_to('', post_like_path(post), method: :delete, class: "glyphicon glyphicon-chevron-down") %>
 				</div>
-				<h4><%= link_to post.title, post.url %></h4> <br>
+				<h4><%= link_to post.title, post.url %></h4>
+				<%= "Posted #{time_ago_in_words(post.created_at)} ago - by #{post.user.username}"%><br>
 				<span class="share"><%= social_share_button_tag(post.title, :url => request.original_url) %> </span>
 				
 				<% if user_signed_in? && !request.path.match(/\A\/user\/\d{1,}\/posts/).nil? %>
@@ -16,7 +17,6 @@
 				<%= link_to('Delete', user_post_path(current_user, post), method: :delete, class: "glyphicon glyphicon-trash")%>
 				<% end %>
 				<br>
-				<%= "Posted #{time_ago_in_words(post.created_at)} ago - by #{post.user.username}"%><br>
 
 				<% if post.categories.all.any? %>
 					categories: 
