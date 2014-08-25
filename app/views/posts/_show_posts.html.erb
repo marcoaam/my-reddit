@@ -4,19 +4,23 @@
 		<%= link_to post.title, post.url %>
 		<%= "Points: #{post.total_points}" %>
 		<%= link_to('Like', post_like_path(post), method: :post, class: "glyphicon glyphicon-chevron-up") %>
-		<%= link_to('Dislike', post_like_path(post), method: :delete, class: "glyphicon glyphicon-chevron-down") %><br>
+		<%= link_to('Dislike', post_like_path(post), method: :delete, class: "glyphicon glyphicon-chevron-down") %>
+		
+		<% if user_signed_in? && !request.path.match(/\A\/user\/\d{1,}\/posts/).nil? %>
+		<%= link_to('Edit', edit_user_post_path(current_user, post), class: "glyphicon glyphicon-pencil") %>
+		<%= link_to('Delete', user_post_path(current_user, post), method: :delete, class: "glyphicon glyphicon-trash")%>
+		<% end %>
+		<br>
 		<span class="share"> Share: <%= social_share_button_tag(post.title, :url => post.url) %> </span>
 		<%= "Posted #{time_ago_in_words(post.created_at)} ago -by #{post.user.username}"%><br>
+
 		<% if post.categories.all.any? %>
 			categories: 
 			<% post.categories.all.each do |category| %>
 				<%= "#{category.name} "%>
 			<% end %><br>
 		<% end %>
-			<% if user_signed_in? && !request.path.match(/\A\/user\/\d{1,}\/posts/).nil? %>
-			<%= link_to('Edit', edit_user_post_path(current_user, post)) %>
-			<%= link_to('Delete', user_post_path(current_user, post), method: :delete )%>
-			<% end %>
+
 			<ul class='post_comments'>
 				<%= render 'comment_form', post: post %>
 				<% post.comments.reverse.each do |comment| %>

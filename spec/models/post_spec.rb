@@ -45,14 +45,15 @@ RSpec.describe Post, :type => :model do
 			expect(Post.newests.first.title).to eq '1'
 		end
 
-		it 'hottest' do
+		it 'hottest posts with most likes for the last 24 hours' do
 			expect(Post.hot.first.title).to eq '3'
 		end
 
-		it 'rising (latest likes)' do
+		it 'rising (latest likes of newests posts)' do
 			expect(Post.rising.first.title).to eq '3'
 			expect(Post.rising[1].title).to eq '4'
 		end
+
 	end
 
 	context 'Likes' do
@@ -76,4 +77,5 @@ RSpec.describe Post, :type => :model do
 	  end
 
 	end
+	
 end

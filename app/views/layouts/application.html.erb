@@ -34,7 +34,7 @@
 					<% else %>
 						<% unless request.original_fullpath == '/users/sign_in' ||  request.original_fullpath == '/users/sign_up' %>
 
-              <button class='navbar-right btn btn-top' data-toggle="modal" data-target="#myModal">Sign up 
+              <button class='navbar-right btn btn-top' data-toggle="modal" data-target="#myModal"><div class="glyphicon glyphicon-user"></div> Sign up
               </button>
               
 							<%= form_for(User.new, as: :user, url: session_path(:user), html: { class: "navbar-form navbar-right" }, role: "form") do |f| %>
