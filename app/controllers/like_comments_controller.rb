@@ -4,8 +4,13 @@ class LikeCommentsController < ApplicationController
 
 	def create
 		comment = Comment.find(params[:comment_id])
-		comment.likes.find_or_create_by(user_id: current_user.id)
-		redirect_to '/posts'
+		if !find_comment_dislike(comment, current_user.id).nil?
+			find_comment_dislike(comment, current_user.id).destroy
+			redirect_to '/posts'
+		else
+			comment.likes.find_or_create_by(user_id: current_user.id)
+			redirect_to '/posts'
+		end
 	end
 
 	def destroy
@@ -19,6 +24,10 @@ class LikeCommentsController < ApplicationController
 			redirect_to '/posts'
 		end
 
+	end
+
+	def find_comment_dislike(comment, user_id)
+		comment.dislikes.find_by(user_id: user_id)
 	end
 
 end

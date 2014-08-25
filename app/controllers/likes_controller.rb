@@ -4,8 +4,13 @@ class LikesController < ApplicationController
 
 	def create
 		post = Post.find(params[:post_id])
-		post.likes.find_or_create_by(user_id: current_user.id)
-		redirect_to '/posts'
+		if !find_post_dislike(post, current_user.id).nil?
+			find_post_dislike(post, current_user.id).destroy
+			redirect_to '/posts'
+		else
+			post.likes.find_or_create_by(user_id: current_user.id)
+			redirect_to '/posts'
+		end
 	end
 
 	def destroy
@@ -18,5 +23,9 @@ class LikesController < ApplicationController
 			post.dislikes.find_or_create_by(user_id: current_user.id)
 			redirect_to '/posts'
 		end
+	end
+
+	def find_post_dislike(post, user_id)
+		post.dislikes.find_by(user_id: user_id)
 	end
 end
