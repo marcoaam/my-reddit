@@ -77,5 +77,10 @@ describe 'Posts' do
 			visit '/posts'
 			expect(page).to have_content 'Challenge day at makers academy'
 		end
+
+		it 'Shows a social sharing bar' do
+			visit '/posts'
+			expect(page).to have_css '.social-share-button'
+		end
 	end 
 end
