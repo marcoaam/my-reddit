@@ -54,4 +54,26 @@ RSpec.describe Post, :type => :model do
 			expect(Post.rising[1].title).to eq '4'
 		end
 	end
+
+	context 'Likes' do
+
+		let(:user)  { User.create(username: 'marco', email: 'm@m.com', password: '12345678', password_confirmation: '12345678')   }
+		let(:user2) { User.create(username: 'marco2', email: 'm@m2.com', password: '12345678', password_confirmation: '12345678') }
+		let(:post)  { Post.create(title: 'Challenge day at makers academy', url: 'marco.com', user: user) }
+		
+		before(:each) do
+			post.likes.create(user_id: user.id)
+			post.likes.create(user_id: user2.id)
+		end
+
+	  it 'calculates the total points' do
+	  	expect(post.total_points).to eq 2
+	  end
+
+	  it 'calculates the total points with dislikes' do
+	  	post.dislikes.create
+	  	expect(post.total_points).to eq 1
+	  end
+
+	end
 end

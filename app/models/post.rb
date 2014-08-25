@@ -4,9 +4,14 @@ class Post < ActiveRecord::Base
 	has_and_belongs_to_many :categories
 	has_many :comments
 	has_many :likes
+	has_many :dislikes
 
 	validates :title, presence: true
 	validates :url, presence: true
+
+	def total_points
+		self.likes.count - self.dislikes.count
+	end
 
 	def categories_list
 	end

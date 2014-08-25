@@ -26,4 +26,8 @@ describe 'Post select' do
 		click_link 'rising'
 		expect(page).to have_content 'makers academy'
 	end
+
+	it 'can filter post by controversial' do
+		
+	end
 end
