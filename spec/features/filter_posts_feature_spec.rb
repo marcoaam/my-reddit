@@ -8,7 +8,7 @@ describe 'Post select' do
 		post_with_like = Post.create(title: 'makers academy', url: 'http://www.makersacademy.com', user: user)
 		post_with_like.likes.create
 		Comment.create(thoughts: 'Great webdev course', user: user, post: post_with_like)
-		
+
 		Post.create(title: 'Challenge day', url: 'http://www.challenge.com', user: user)
 	end
 
@@ -33,6 +33,12 @@ describe 'Post select' do
 	it 'can filter post by controversial' do
 		visit '/posts'
 		click_link 'controversial'
+		expect(page).to have_content 'makers academy'
+	end
+
+	it 'can filter post by top' do
+		visit '/posts'
+		click_link 'top'
 		expect(page).to have_content 'makers academy'
 	end
 end
