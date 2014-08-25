@@ -25,9 +25,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">My Reddit</a>
+          <a class="navbar-brand" href="/">My Reddit</a>
         </div>
         <div class="navbar-collapse collapse">
+
+          <ul class="nav navbar-nav">
+            <li><%= link_to('new', post_path('newests')) %></li>
+            <li><%= link_to('hot', post_path('hot')) %></li>
+            <li><%= link_to('rising', post_path('rising')) %></li>
+            <li><%= link_to('controversial', post_path('controversial')) %></li>
+            <li><%= link_to('top', post_path('top')) %></li>
+          </ul>
+
          <% if user_signed_in? %>
          		<%= link_to('My posts', user_posts_path(current_user), class: 'navbar-right btn btn-top') %>
 						<%=link_to('Sign out', destroy_user_session_path, method: :delete, class: 'navbar-right btn btn-danger') %>
@@ -52,11 +61,7 @@
             [ <span class="glyphicon glyphicon-pencil"></span> ]
             <span>New link post</span>
           <% end %>
-          <%= link_to('new', post_path('newests'), class: 'navbar-right btn btn-top') %>
-          <%= link_to('hot', post_path('hot'), class: 'navbar-right btn btn-top') %>
-          <%= link_to('rising', post_path('rising'), class: 'navbar-right btn btn-top') %>
-          <%= link_to('controversial', post_path('controversial'), class: 'navbar-right btn btn-top') %>
-          <%= link_to('top', post_path('top'), class: 'navbar-right btn btn-top') %>
+        
         </div><!--/.navbar-collapse -->
       </div>
     </div>
