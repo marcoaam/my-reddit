@@ -34,7 +34,7 @@ class Post < ActiveRecord::Base
 	end
 
 	def self.controversial
-		self.all.select { |post| post.likes.any? }.sort_by { |post| post.comments.count }.reverse
+		self.all.sort_by { |post| post.comments.count }.reverse
 	end
 
 	def self.top

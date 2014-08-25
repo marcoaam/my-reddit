@@ -63,7 +63,6 @@ RSpec.describe Post, :type => :model do
 
 		it 'controversial (most commented)' do
 			expect(Post.controversial.first.title).to eq '3'
-			expect(Post.controversial[1].title).to eq '4'
 		end
 
 		it 'top (most likes of all times)' do
