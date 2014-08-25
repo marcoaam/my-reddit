@@ -66,6 +66,11 @@ RSpec.describe Post, :type => :model do
 			expect(Post.controversial[1].title).to eq '4'
 		end
 
+		it 'top (most likes of all times)' do
+			expect(Post.top.first.title).to eq '3'
+			expect(Post.top[1].title).to eq '4'
+		end
+
 	end
 
 	context 'Likes' do

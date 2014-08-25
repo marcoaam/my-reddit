@@ -37,6 +37,10 @@ class Post < ActiveRecord::Base
 		self.all.select { |post| post.likes.any? }.sort_by { |post| post.comments.count }.reverse
 	end
 
+	def self.top
+		self.all.select { |post| post.likes.any? }.sort_by { |post| post.likes.count }.reverse
+	end
+
 	def self.posts_over_last_24_hours
 		self.all.select { |post| (Time.now - post.created_at) < (3600 * 24) }
 	end
