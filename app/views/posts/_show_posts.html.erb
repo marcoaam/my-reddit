@@ -12,7 +12,7 @@
 		<% end %>
 		<br>
 		<span class="share"> Share: <%= social_share_button_tag(post.title, :url => post.url) %> </span>
-		<%= "Posted #{time_ago_in_words(post.created_at)} ago -by #{post.user.username}"%><br>
+		<%= "Posted #{time_ago_in_words(post.created_at)} ago - by #{post.user.username}"%><br>
 
 		<% if post.categories.all.any? %>
 			categories: 

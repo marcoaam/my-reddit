@@ -16,8 +16,7 @@ class LikesController < ApplicationController
 	def destroy
 		post = Post.find(params[:post_id])
 		if !post.likes.find_by(user_id: current_user.id).nil?
-			like = post.likes.find_by(user_id: current_user.id)
-			like.destroy
+			post.likes.find_by(user_id: current_user.id).destroy
 			redirect_to '/posts'
 		else
 			post.dislikes.find_or_create_by(user_id: current_user.id)
