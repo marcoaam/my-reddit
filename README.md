@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/marcoaam/my-reddit/badges/gpa.svg)](https://codeclimate.com/github/marcoaam/my-reddit) [![Test Coverage](https://codeclimate.com/github/marcoaam/my-reddit/badges/coverage.svg)](https://codeclimate.com/github/marcoaam/my-reddit)
+
 My Reddit
 =========
 
@@ -12,10 +14,10 @@ Technologies used:
 ------------------
 
 - Ruby
-- JavaScript
+- Rails, '4.1.4'
 - HTML5
 - CSS
-- Rails, '4.1.4'
+- JavaScript
 - JQuery
 - Capybara
 - RSpec
